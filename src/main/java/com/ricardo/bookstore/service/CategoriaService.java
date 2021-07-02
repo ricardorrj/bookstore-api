@@ -1,5 +1,6 @@
 package com.ricardo.bookstore.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,11 @@ public class CategoriaService {
 
 		return cat.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto Não encontrado! Id: " + id + " Tipo: " + Categoria.class.getName()));
+	}
+	
+	
+	public List<Categoria> findAll(){	
+		List<Categoria> categorias = categoriaRepository.findAll();	
+		return categorias;
 	}
 }
