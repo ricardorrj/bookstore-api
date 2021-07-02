@@ -50,5 +50,10 @@ public class CategoriaService {
 	}
 	
 	
+	public void delete(Integer id) {
+		findByid(id);
+		categoriaRepository.deleteById(id);
+	}
+	
 	
 }
