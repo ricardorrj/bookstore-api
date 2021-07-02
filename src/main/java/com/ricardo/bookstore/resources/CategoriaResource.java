@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,12 +46,20 @@ public class CategoriaResource {
 	
 	
 	@PostMapping
-	public ResponseEntity<Categoria> create(@RequestBody Categoria cat){
-		cat = service.create(cat);
+	public ResponseEntity<Categoria> create(@RequestBody Categoria obj){
+		obj = service.create(obj);
 		
 		//Retorna o ID da categoria criada, Caminho para acesso
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").buildAndExpand(cat.getId()).toUri();  
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{id}").buildAndExpand(obj.getId()).toUri();  
 		 
 		return ResponseEntity.created(uri).build();
+	}
+	
+	
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<CategoriaDTO> update(@PathVariable Integer id, @RequestBody CategoriaDTO objDTO){
+		Categoria newCat = service.update(id, objDTO);
+		
+		return ResponseEntity.ok().body(new CategoriaDTO(newCat));
 	}
 }
