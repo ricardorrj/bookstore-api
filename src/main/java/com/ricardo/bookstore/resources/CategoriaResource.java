@@ -72,3 +72,8 @@ public class CategoriaResource {
 		return ResponseEntity.noContent().build(); //Não retorna nenhum conteudo! 
 	}
 }
+
+
+
+
+
