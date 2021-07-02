@@ -29,4 +29,12 @@ public class CategoriaService {
 		List<Categoria> categorias = categoriaRepository.findAll();	
 		return categorias;
 	}
+	
+	
+	public Categoria create(Categoria cat) {
+		cat.setId(null); 
+		Categoria categoria = categoriaRepository.save(cat);
+		
+		return categoria;
+	}
 }
