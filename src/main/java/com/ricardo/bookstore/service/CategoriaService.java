@@ -7,17 +7,19 @@ import org.springframework.stereotype.Service;
 
 import com.ricardo.bookstore.domain.Categoria;
 import com.ricardo.bookstore.repositories.CategoriaRepository;
+import com.ricardo.bookstore.service.exception.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
+
 	public Categoria findByid(Integer id) {
-		
+
 		Optional<Categoria> cat = categoriaRepository.findById(id);
-		
-		return cat.orElse(null);	//orElse retorna null quando não encontrado dados obj
+
+		return cat.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto Não encontrado! Id: " + id + " Tipo: " + Categoria.class.getName()));
 	}
 }
