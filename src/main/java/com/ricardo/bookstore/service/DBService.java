@@ -20,9 +20,9 @@ public class DBService {
 	private LivroRepository livroRepository;
 	
 	public void instanciaBaseDataBase() {
-		Categoria cat = new Categoria(null, "Curso Java", "TI");
-		Categoria cat2 = new Categoria(null, "Programação POO", "TI");
-		Categoria cat3 = new Categoria(null, "Desenvolvimento Web", "TI");
+		Categoria cat = new Categoria(null, "Curso Java", "TI-01");
+		Categoria cat2 = new Categoria(null, "Programação POO", "TI-01");
+		Categoria cat3 = new Categoria(null, "Desenvolvimento Web", "TI-01");
 		
 		Livro livro = new Livro(null, "Titulo Livro", "Autor", "Texto teste", cat);
 		Livro livro2 = new Livro(null, "Titulo Livro2", "Autor2", "Texto teste2", cat);

@@ -2,14 +2,21 @@ package com.ricardo.bookstore.dtos;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.ricardo.bookstore.domain.Livro;
 
 public class LivroDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private String titulo;
 	
+	@NotEmpty(message = "Campo titulo é requerido")	
+	@Length(min = 3, max = 50, message = "O campo titulo deve ter entre 3 e 50 caracteres")
+	private String titulo;
+		
 	public LivroDTO() {
 		super();
 	}
